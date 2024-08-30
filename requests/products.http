@@ -1,0 +1,2 @@
+### [C]reate product
+POST http://localhost:3000/products
