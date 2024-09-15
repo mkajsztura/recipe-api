@@ -1,7 +1,7 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateDishDto } from './dto/create-dish.dto';
 import { UpdateDishDto } from './dto/update-dish.dto';
-import { ProductsService } from 'src/products/products.service';
+import { ProductsService } from '../products/products.service';
 
 @Injectable()
 export class DishesService {
