@@ -1,26 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateDishDto } from './dto/create-dish.dto';
 import { UpdateDishDto } from './dto/update-dish.dto';
+import { ProductsService } from 'src/products/products.service';
 
 @Injectable()
 export class DishesService {
-  create(createDishDto: CreateDishDto) {
-    return 'This action adds a new dish';
-  }
+    constructor(
+        @Inject(forwardRef(() => ProductsService))
+        private productService: ProductsService,
+    ) {}
 
-  findAll() {
-    return `This action returns all dishes`;
-  }
+    create(createDishDto: CreateDishDto) {
+        return 'This action adds a new dish';
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} dish`;
-  }
+    findAll() {
+        return `This action returns all dishes`;
+    }
 
-  update(id: number, updateDishDto: UpdateDishDto) {
-    return `This action updates a #${id} dish`;
-  }
+    findOne(id: number) {
+        return `This action returns a #${id} dish`;
+    }
 
-  remove(id: number) {
-    return `This action removes a #${id} dish`;
-  }
+    update(id: number, updateDishDto: UpdateDishDto) {
+        return `This action updates a #${id} dish`;
+    }
+
+    remove(id: number) {
+        return `This action removes a #${id} dish`;
+    }
 }

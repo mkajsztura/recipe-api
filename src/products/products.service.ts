@@ -1,9 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { DishesService } from 'src/dishes/dishes.service';
 
 @Injectable()
 export class ProductsService {
+    constructor(
+        @Inject(forwardRef(() => DishesService))
+        private dishService: DishesService,
+    ) {}
+
     create(createProductDto: CreateProductDto) {
         return 'This action adds a new product';
     }
