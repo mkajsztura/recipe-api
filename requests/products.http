@@ -1,8 +1,28 @@
-### [C]reate product
+### Create
 POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "name": "Product 1",
-    "description": "100"
+  "name": "Pasta",
+  "unit": "kg",
+  "amount": 1
 }
+
+### Get all
+GET http://localhost:3000/products
+
+### Get one by id
+GET http://localhost:3000/products/1
+
+### Update
+PUT http://localhost:3000/products/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "amount": 2
+}
+
+### Delete
+DELETE http://localhost:3000/products/1
+

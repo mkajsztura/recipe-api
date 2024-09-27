@@ -1,3 +1,29 @@
-### Dishes
+### Create
+POST http://localhost:3000/dishes
+Content-Type: application/json
 
+{
+  "name": "Pasta",
+  "servings": 2
+}
+
+### Get all
 GET http://localhost:3000/dishes
+
+### Get one by id
+GET http://localhost:3000/dishes/3
+
+### Update
+PUT http://localhost:3000/dishes/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "Pasta",
+  "description": "Pasta with tomato sauce",
+  "servings": 3
+}
+
+### Delete
+DELETE http://localhost:3000/dishes/1
+

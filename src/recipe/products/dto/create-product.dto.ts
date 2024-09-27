@@ -1,9 +1,13 @@
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class CreateProductDto {
     @IsString()
     name: string;
 
     @IsString()
-    description?: string;
+    unit: 'kg' | 'l' | 'item';
+
+    @IsNumber()
+    amount: number;
+
 }

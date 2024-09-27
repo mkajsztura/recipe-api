@@ -1,32 +1,37 @@
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { DishesService } from '../dishes/dishes.service';
+import { Product } from './entities/product.entity';
 
 @Injectable()
 export class ProductsService {
-    constructor(
-        @Inject(forwardRef(() => DishesService))
-        private dishService: DishesService,
-    ) {}
 
-    create(createProductDto: CreateProductDto) {
-        return 'This action adds a new product';
+    create(createProductDto: CreateProductDto): Promise<Product> {
+        const newProduct = new Product();
+        Object.assign(newProduct, createProductDto);
+        return newProduct.save();
     }
 
-    findAll() {
-        return `This action returns all products`;
+    findAll(): Promise<Product[]> {
+        return Product.find();
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} product`;
+    async findOne(id: number): Promise<Product> {
+        const product = await Product.findOneBy({ id });
+        if (!product) {
+            throw new NotFoundException(`Product #${id} not found`);
+        }
+        return product;
     }
 
-    update(id: number, updateProductDto: UpdateProductDto) {
-        return `This action updates a #${id} product`;
+    async update(updateProductDto: UpdateProductDto): Promise<Product> {
+        const productToUpdate = await this.findOne(updateProductDto.id);
+        Object.assign(productToUpdate, updateProductDto);
+        return productToUpdate.save();
     }
 
-    remove(id: number) {
-        return `This action removes a #${id} product`;
+    async remove(id: number): Promise<Product> {
+        const productToRemove = await this.findOne(id);
+        return productToRemove.remove();
     }
 }

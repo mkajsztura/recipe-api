@@ -1,21 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Product } from '../../products/entities/product.entity';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Dish {
+export class Dish extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'varchar'})
+    @Column({ type: 'varchar' })
     name: string;
 
-    @Column({ type: 'decimal'})
+    @Column({ type: 'decimal' })
     servings: string;
 
-    @Column({ nullable: true, type: 'text'})
+    @Column({ nullable: true, type: 'text' })
     description?: string;
 
     // @OneToMany(() => Product, product => product.dish)
-    @Column()
-    products: Product[];
+    // @Column()
+    // products: Product[];
 }
