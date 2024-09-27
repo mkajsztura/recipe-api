@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateDishDto {
     @IsString()
@@ -6,6 +6,9 @@ export class CreateDishDto {
 
     @IsOptional()
     description: string;
+
+    @IsNumber()
+    servings: number;
 
     @IsOptional()
     products: string[];
