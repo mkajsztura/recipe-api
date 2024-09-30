@@ -3,9 +3,10 @@ POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "name": "Pasta",
+  "name": "Sugar",
   "unit": "kg",
-  "amount": 1
+  "amount": 2,
+  "dishId": 3
 }
 
 ### Get all

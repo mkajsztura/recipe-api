@@ -10,4 +10,6 @@ export class CreateProductDto {
     @IsNumber()
     amount: number;
 
+    @IsNumber()
+    dishId: number;
 }

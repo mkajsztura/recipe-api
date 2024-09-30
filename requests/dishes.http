@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "id": 3,
-  "name": "Pasta",
+  "name": "Cośtam",
   "description": "Pasta with tomato sauce",
   "servings": 3
 }

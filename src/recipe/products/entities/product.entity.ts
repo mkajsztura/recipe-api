@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Dish } from '../../dishes/entities/dish.entity';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -14,6 +15,6 @@ export class Product extends BaseEntity {
     @Column({type: 'decimal'})
     amount: number;
 
-    // @Column({type: 'int'})
-    // dishId: number; // todo add relation to dish => foreign key
+    @ManyToOne(() => Dish, (dish: Dish) => dish.products, {onDelete: 'CASCADE'})
+    dish: Dish;
 }
