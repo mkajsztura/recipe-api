@@ -1,4 +1,5 @@
 import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { Product } from 'src/recipe/products/entities/product.entity';
 
 export class CreateDishDto {
     @IsString()
@@ -11,5 +12,5 @@ export class CreateDishDto {
     servings: number;
 
     @IsOptional()
-    products: string[];
+    products: Product[];
 }

@@ -9,11 +9,11 @@ export class Dish extends BaseEntity {
     @Column({ type: 'varchar' })
     name: string;
 
-    @Column({ type: 'decimal' })
-    servings: string;
-
     @Column({ nullable: true, type: 'text' })
     description?: string;
+    
+    @Column({ type: 'decimal' })
+    servings: number;
 
     @OneToMany(() => Product, (product) => product.dish)
     products: Product[];
