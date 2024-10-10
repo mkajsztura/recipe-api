@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Dish } from '../../dishes/entities/dish.entity';
+import { Dish } from '../../dishes/dish.entity';
 
 @Entity()
 export class Product extends BaseEntity {

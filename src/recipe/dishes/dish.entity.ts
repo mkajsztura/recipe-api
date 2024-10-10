@@ -1,5 +1,13 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Product } from '../../products/entities/product.entity';
+import { User } from 'src/user/user.entity';
+import {
+    BaseEntity,
+    Column,
+    Entity,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '../products/entities/product.entity';
 
 @Entity()
 export class Dish extends BaseEntity {
@@ -11,10 +19,16 @@ export class Dish extends BaseEntity {
 
     @Column({ nullable: true, type: 'text' })
     description?: string;
-    
+
     @Column({ type: 'decimal' })
     servings: number;
 
     @OneToMany(() => Product, (product) => product.dish)
     products: Product[];
+
+    @ManyToOne(() => User, (user) => user.dishes)
+    user: User;
+
+    @Column({type: 'boolean'})
+    isPublic: boolean;
 }
