@@ -1,20 +1,25 @@
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Dish } from '../../dishes/dish.entity';
+import {
+    BaseEntity,
+    Column,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Product extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({type: 'varchar', length: 255})
+    @Column({ type: 'varchar', length: 255 })
     name: string;
 
-    @Column({type: 'varchar'})
+    @Column({ type: 'varchar' })
     unit: 'kg' | 'l' | 'item';
 
-    @Column({type: 'decimal'})
-    amount: number;
-
-    @ManyToOne(() => Dish, (dish: Dish) => dish.products, {onDelete: 'CASCADE'})
-    dish: Dish;
+    // one product (can be assigned) to many ingredients
+    @OneToMany(() => Product, (product) => product.ingredients, {
+        onDelete: 'CASCADE',
+    })
+    ingredients: Product[];
 }
