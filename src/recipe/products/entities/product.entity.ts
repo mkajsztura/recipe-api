@@ -1,3 +1,4 @@
+import { Ingredient } from 'src/recipe/ingredients/ingerdient.entity';
 import {
     BaseEntity,
     Column,
@@ -18,8 +19,8 @@ export class Product extends BaseEntity {
     unit: 'kg' | 'l' | 'item';
 
     // one product (can be assigned) to many ingredients
-    @OneToMany(() => Product, (product) => product.ingredients, {
+    @OneToMany(() => Ingredient, (ingredient) => ingredient.product, {
         onDelete: 'CASCADE',
     })
-    ingredients: Product[];
+    ingredients: Ingredient[];
 }
