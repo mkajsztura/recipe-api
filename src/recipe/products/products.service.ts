@@ -12,14 +12,6 @@ export class ProductsService {
         private dishesService: DishesService) {}
 
     async create(createProductDto: CreateProductDto): Promise<Product> {
-        const dish = await this.dishesService.findOne(createProductDto.dishId);
-
-        if (!dish) {
-            throw new NotFoundException(
-                `Dish #${createProductDto.dishId} not found`,
-            );
-        }
-
         return this.productRepository.save(createProductDto);
     }
 

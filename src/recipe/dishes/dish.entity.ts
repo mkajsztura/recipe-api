@@ -20,9 +20,6 @@ export class Dish extends BaseEntity {
     @Column({ nullable: true, type: 'text' })
     description?: string;
 
-    @Column({ type: 'decimal' })
-    servings: number;
-
     @Column({ type: 'boolean' })
     isPublic: boolean;
 

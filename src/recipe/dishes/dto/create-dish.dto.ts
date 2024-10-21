@@ -1,5 +1,12 @@
-import { IsNumber, IsOptional, IsString } from 'class-validator';
-import { Product } from 'src/recipe/products/entities/product.entity';
+import { Type } from 'class-transformer';
+import {
+    IsArray,
+    IsBoolean,
+    IsOptional,
+    IsString,
+    ValidateNested,
+} from 'class-validator';
+import { CreateIngredientDto } from 'src/recipe/ingredients/dto/create-ingredient.dto';
 
 export class CreateDishDto {
     @IsString()
@@ -8,9 +15,12 @@ export class CreateDishDto {
     @IsOptional()
     description: string;
 
-    @IsNumber()
-    servings: number;
+    @IsBoolean()
+    isPublic: boolean;
 
     @IsOptional()
-    products: Product[];
+    @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => CreateIngredientDto)
+    ingredients: CreateIngredientDto[]; // array of ingredient ids
 }

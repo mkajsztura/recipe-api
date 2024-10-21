@@ -12,6 +12,7 @@ export class DishesService {
     ) {}
 
     create(createDishDto: CreateDishDto): Promise<Dish> {
+        // najpierw dodać ingredients?
         return this.dishRepository.save(createDishDto);
     }
 
