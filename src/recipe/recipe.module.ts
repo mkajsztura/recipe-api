@@ -6,9 +6,10 @@ import { Dish } from './dishes/dish.entity';
 import { Product } from './products/entities/product.entity';
 import { ProductsController } from './products/products.controller';
 import { ProductsService } from './products/products.service';
+import { Ingredient } from './ingredients/ingerdient.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Product, Dish])],
+    imports: [TypeOrmModule.forFeature([Product, Dish, Ingredient])],
     controllers: [ProductsController, DishesController],
     providers: [ProductsService, DishesService],
 })

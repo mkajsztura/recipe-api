@@ -4,11 +4,19 @@ import { AppService } from './app.service';
 import { RecipeModule } from './recipe/recipe.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { ConfigModule } from '@nestjs/config';
+import * as process from 'node:process';
 
 @Module({
-    imports: [RecipeModule, TypeOrmModule.forRoot({
-        type: 'sqlite',
-        database: './database/my-db.sqlite3',
+    imports: [
+        ConfigModule.forRoot(),
+        RecipeModule, TypeOrmModule.forRoot({
+        type: 'postgres',
+        host: process.env.DB_HOST,
+        port: +process.env.DB_PORT,
+        username: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
         autoLoadEntities: true,
         synchronize: true,
     }), UserModule],
