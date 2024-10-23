@@ -4,9 +4,7 @@ Content-Type: application/json
 
 {
   "name": "Sugar",
-  "unit": "kg",
-  "amount": 2,
-  "dishId": 3
+  "unit": "kg"
 }
 
 ### Get all
@@ -16,12 +14,11 @@ GET http://localhost:3000/products
 GET http://localhost:3000/products/1
 
 ### Update
-PUT http://localhost:3000/products/1
+PUT http://localhost:3000/products/3
 Content-Type: application/json
 
 {
-  "id": 1,
-  "amount": 2
+  "name": "Sugar2"
 }
 
 ### Delete
