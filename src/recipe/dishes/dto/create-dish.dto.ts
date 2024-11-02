@@ -22,5 +22,5 @@ export class CreateDishDto {
     @IsArray()
     @ValidateNested({ each: true })
     @Type(() => CreateIngredientDto)
-    ingredients: CreateIngredientDto[]; // array of ingredient ids
+    ingredients: CreateIngredientDto[];
 }

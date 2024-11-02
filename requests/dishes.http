@@ -3,8 +3,15 @@ POST http://localhost:3000/dishes
 Content-Type: application/json
 
 {
-  "name": "Pasta",
-  "servings": 2
+  "name": "Pasta with ingredients",
+  "description": "Pasta description 2",
+  "isPublic": true,
+  "ingredients": [
+    {
+      "productId": 2,
+      "amount": 3
+    }
+  ]
 }
 
 ### Get all
