@@ -1,15 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { Ingredient } from './ingerdient.entity';
 import { Dish } from '../dishes/dish.entity';
 import { ProductsService } from '../products/products.service';
+import { IngredientRepository } from './ingredient.repository';
 
 @Injectable()
 export class IngredientService {
     constructor(
-        @InjectRepository(Ingredient)
-        private ingredientRepository: Repository<Ingredient>,
+        private ingredientRepository: IngredientRepository,
         private productService: ProductsService,
     ) {}
 
@@ -22,7 +20,12 @@ export class IngredientService {
         ingredient.amount = amount;
         ingredient.dish = dish;
         ingredient.product = await this.productService.findOne(productId);
-        console.log('ingredient:', ingredient)
+        console.log('ingredient:', ingredient);
         return await this.ingredientRepository.save(ingredient);
+    }
+
+    async findById(id: number): Promise<Ingredient> {
+        console.log('id:', id);
+        return this.ingredientRepository.findById(id);
     }
 }

@@ -8,7 +8,7 @@ Content-Type: application/json
   "isPublic": true,
   "ingredients": [
     {
-      "productId": 2,
+      "productId": 3,
       "amount": 3
     }
   ]

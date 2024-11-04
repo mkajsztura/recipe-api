@@ -8,10 +8,18 @@ import { ProductsController } from './products/products.controller';
 import { ProductsService } from './products/products.service';
 import { Ingredient } from './ingredients/ingerdient.entity';
 import { IngredientService } from './ingredients/ingredient.service';
+import { IngredientController } from './ingredients/ingredient.controller';
+import { IngredientRepository } from './ingredients/ingredient.repository';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Product, Dish, Ingredient])],
-    controllers: [ProductsController, DishesController],
-    providers: [ProductsService, DishService, IngredientService],
+    imports: [
+        TypeOrmModule.forFeature([
+            Product,
+            Dish,
+            Ingredient,
+        ]),
+    ],
+    controllers: [ProductsController, DishesController, IngredientController],
+    providers: [ProductsService, DishService, IngredientService, IngredientRepository],
 })
 export class RecipeModule {}
