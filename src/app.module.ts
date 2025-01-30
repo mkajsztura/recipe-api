@@ -5,8 +5,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RecipeModule } from './recipe/recipe.module';
 import { UserModule } from './user/user.module';
-import { DATABASE_CONFIG } from './config/database.config';
 import { envValidationSchema } from './config/env-validation.config';
+import { databaseConfig } from './config/database.config';
 
 @Module({
     imports: [
@@ -16,7 +16,7 @@ import { envValidationSchema } from './config/env-validation.config';
             validationSchema: envValidationSchema,
         }),
         RecipeModule,
-        TypeOrmModule.forRootAsync(DATABASE_CONFIG),
+        TypeOrmModule.forRootAsync(databaseConfig),
         UserModule,
     ],
     controllers: [AppController],
