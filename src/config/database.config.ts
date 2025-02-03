@@ -12,7 +12,6 @@ if(result.error) {
 }
 
 function getTypeOrmConfig(configService: ConfigService): DataSourceOptions {
-    console.log(configService.get('DB_PASSWORD'))
     return {
         type: 'postgres',
         host: configService.get<string>('DB_HOST'),
@@ -22,17 +21,20 @@ function getTypeOrmConfig(configService: ConfigService): DataSourceOptions {
         database: configService.get<string>('DB_NAME'),
         synchronize: false,
         entities: ['dist/**/*.entity.ts'],
-        migrations: ['dist/database/migrations/*.ts'],
+        migrations: ['dist/database/migrations/*.js'],
         migrationsRun: false,
         logging: true,
     }
 }
-const AppDataSource = new DataSource(getTypeOrmConfig(new ConfigService()));
 
-export default AppDataSource;
 
 export const databaseConfig: TypeOrmModuleAsyncOptions = {
     imports: [ConfigModule],
     inject: [ConfigService],
     useFactory: async (configService: ConfigService) => (getTypeOrmConfig(configService)),
 }
+
+const AppDataSource = new DataSource(getTypeOrmConfig(new ConfigService()));
+
+export default AppDataSource;
+
