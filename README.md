@@ -91,4 +91,4 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 ```npx typeorm migration:create ./database/migrations/CreateUserTable```
 
 ## Run Migration
-```npm run migrate```
+```npm run migration```

@@ -27,7 +27,6 @@ function getTypeOrmConfig(configService: ConfigService): DataSourceOptions {
     }
 }
 
-
 export const databaseConfig: TypeOrmModuleAsyncOptions = {
     imports: [ConfigModule],
     inject: [ConfigService],

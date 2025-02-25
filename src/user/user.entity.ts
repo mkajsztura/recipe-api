@@ -1,5 +1,5 @@
 import { Dish } from "src/recipe/dishes/dish.entity";
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class User extends BaseEntity {
@@ -7,8 +7,14 @@ export class User extends BaseEntity {
     id: number;
 
     @Column({type: 'varchar'})
-    username: string
+    username: string;
+
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
 
     @OneToMany(() => Dish, (dish) => dish.user)
-    dishes: Dish[]
+    dishes: Dish[];
 }
