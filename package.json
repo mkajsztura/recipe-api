@@ -18,7 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migration:create": "npx typeorm migration:create ./database/migrations/MigrationName",
+    "migration:create": "npx typeorm migration:create ./database/migrations/CreateProductTable",
     "migration": "npx ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/config/database.config.ts",
     "migration:revert": "npx ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/config/database.config.ts"
   },

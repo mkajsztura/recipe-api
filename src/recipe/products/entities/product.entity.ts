@@ -1,11 +1,5 @@
 import { Ingredient } from 'src/recipe/ingredients/ingerdient.entity';
-import {
-    BaseEntity,
-    Column,
-    Entity,
-    OneToMany,
-    PrimaryGeneratedColumn,
-} from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -17,6 +11,12 @@ export class Product extends BaseEntity {
 
     @Column({ type: 'varchar' })
     unit: 'kg' | 'l' | 'item';
+
+    @Column({type: 'timestamp'})
+    createdAt: Date
+
+    @Column({type: 'timestamp'})
+    updatedAt: Date
 
     // one product (can be assigned) to many ingredients
     @OneToMany(() => Ingredient, (ingredient) => ingredient.product, {
