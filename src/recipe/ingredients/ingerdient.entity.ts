@@ -13,7 +13,7 @@ export class Ingredient extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'decimal' })
+    @Column({ type: 'int' })
     amount: number;
 
     // many ingredients to one dish
