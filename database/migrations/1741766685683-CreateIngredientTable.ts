@@ -17,6 +17,14 @@ export class CreateIngredientTable1741766685683 implements MigrationInterface {
                         name: "amount",
                         type: "int",
                     },
+                    {
+                        name: 'dishId',
+                        type: 'int',
+                    },
+                    {
+                        name: 'productId',
+                        type: 'int',
+                    }
                 ],
             }),
             true,
@@ -38,7 +46,7 @@ export class CreateIngredientTable1741766685683 implements MigrationInterface {
                 columnNames: ["productId"],
                 referencedColumnNames: ["id"],
                 referencedTableName: "product",
-                onDelete: "NO ACTION",
+                onDelete: "CASCADE",
             }),
         );
     }
