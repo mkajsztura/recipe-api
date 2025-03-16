@@ -33,7 +33,8 @@ export const databaseConfig: TypeOrmModuleAsyncOptions = {
     useFactory: async (configService: ConfigService) => (getTypeOrmConfig(configService)),
 }
 
-const AppDataSource = new DataSource(getTypeOrmConfig(new ConfigService()));
+const dataSource = new DataSource(getTypeOrmConfig(new ConfigService()));
+export const dataSourceOptions = getTypeOrmConfig(new ConfigService());
 
-export default AppDataSource;
+export default dataSource;
 

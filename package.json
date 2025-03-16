@@ -18,11 +18,13 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migration:create": "npx typeorm migration:create ./database/migrations/CreateIngredientTable",
+    "migration:create": "npx typeorm migration:create src/database/migrations/CreateIngredientTable",
     "migration": "npx ts-node ./node_modules/typeorm/cli.js migration:run -d ./src/config/database.config.ts",
-    "migration:revert": "npx ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/config/database.config.ts"
+    "migration:revert": "npx ts-node ./node_modules/typeorm/cli.js migration:revert -d ./src/config/database.config.ts",
+    "seed": "ts-node ./node_modules/typeorm-extension/bin/cli.mjs seed:run --dataSource ./src/config/database.seed.config.ts"
   },
   "dependencies": {
+    "@fakerjs/faker": "^3.0.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.2.3",
     "@nestjs/core": "^10.0.0",
@@ -36,7 +38,8 @@
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "sqlite3": "^5.1.7",
-    "typeorm": "^0.3.20"
+    "typeorm": "^0.3.20",
+    "typeorm-extension": "^3.7.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
