@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { Dish } from '../recipe/dishes/dish.entity';
+import { Dish } from '../../recipe/dishes/dish.entity';
 
 @Entity()
 export class User extends BaseEntity {

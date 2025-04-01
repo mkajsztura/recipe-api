@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Ingredient } from '../ingredients/ingerdient.entity';
-import { User } from '../../user/user.entity';
+import { User } from '../../auth/user/user.entity';
 
 @Entity()
 export class Dish extends BaseEntity {

@@ -4,9 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RecipeModule } from './recipe/recipe.module';
-import { UserModule } from './user/user.module';
 import { envValidationSchema } from './config/env-validation.config';
 import { databaseConfig } from './config/database.config';
+import { AuthModule } from './auth/auth/auth.module';
 
 @Module({
     imports: [
@@ -17,7 +17,7 @@ import { databaseConfig } from './config/database.config';
         }),
         RecipeModule,
         TypeOrmModule.forRootAsync(databaseConfig),
-        UserModule,
+        AuthModule,
     ],
     controllers: [AppController],
     providers: [AppService],
