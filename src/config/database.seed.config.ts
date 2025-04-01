@@ -11,11 +11,13 @@ import ProductSeeder from '../database/seeds/1-product.seed';
 import ProductFactory from '../database/factories/product.factory';
 import DishSeeder from '../database/seeds/2-dish.seed';
 import DishFactory from '../database/factories/dish.factory';
+import IngredientSeeder from '../database/seeds/3-ingredient.seed';
+import IngredientFactory from '../database/factories/ingredient.factory';
 
 const seedDataSourceOptions: DataSourceOptions & SeederOptions = {
     ...dataSourceOptions,
-    seeds: [UserSeeder, ProductSeeder, DishSeeder],
-    factories: [UserFactory, ProductFactory, DishFactory],
+    seeds: [UserSeeder, ProductSeeder, DishSeeder, IngredientSeeder],
+    factories: [UserFactory, ProductFactory, DishFactory, IngredientFactory],
     entities: [User, Dish, Ingredient, Product],
 };
 
