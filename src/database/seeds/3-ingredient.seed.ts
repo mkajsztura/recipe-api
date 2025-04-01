@@ -1,6 +1,5 @@
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 import { DataSource } from 'typeorm';
-import { User } from '../../user/user.entity';
 import { Dish } from '../../recipe/dishes/dish.entity';
 import { Product } from '../../recipe/products/entities/product.entity';
 import { Ingredient } from '../../recipe/ingredients/ingerdient.entity';
