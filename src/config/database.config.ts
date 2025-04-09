@@ -20,7 +20,7 @@ function getTypeOrmConfig(configService: ConfigService): DataSourceOptions {
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_NAME'),
         synchronize: false,
-        entities: ['dist/**/*.entity.ts'],
+        entities: ['dist/**/*.entity{.ts,.js}'],
         migrations: ['dist/database/migrations/*.js'],
         migrationsRun: false,
         logging: true,

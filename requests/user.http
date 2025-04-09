@@ -1,0 +1,8 @@
+### Create
+POST http://localhost:3232/auth/register
+Content-Type: application/json
+
+{
+  "email": "aaaaaaaaaaaa@bbbbbbbbbb.pl",
+  "password": "ccccccccc"
+}

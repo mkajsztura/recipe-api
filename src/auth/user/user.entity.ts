@@ -7,13 +7,10 @@ export class User extends BaseEntity {
     id: number;
 
     @Column({type: 'varchar'})
-    username: string;
+    email: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @UpdateDateColumn()
-    updatedAt: Date;
+    @Column({type: 'varchar'})
+    password: string;
 
     @OneToMany(() => Dish, (dish) => dish.user)
     dishes: Dish[];
