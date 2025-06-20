@@ -1,0 +1,40 @@
+# Dependency directories
+node_modules
+npm-debug.log
+
+# Build outputs
+dist
+build
+coverage
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Editor/IDE specific files
+.idea
+.vscode
+*.swp
+*.swo
+
+# Version control
+.git
+.gitignore
+
+# Docker files
+Dockerfile
+docker-compose.yml
+
+# Test files
+test
+**/*.spec.ts
+**/*.test.ts
+
+# Logs
+logs
+*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
