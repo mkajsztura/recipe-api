@@ -6,27 +6,28 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - db
-    environment:
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
-      - DB_NAME=recipe_db
-      - NODE_ENV=development
+      db:
+        condition: service_healthy
+    env_file:
+      - .env.development
     restart: unless-stopped
 
   db:
     image: postgres:17-alpine
     ports:
-      - '5432:5432'
+      - '5433:5432'  # Use external port 5433 to avoid conflict with local PostgreSQL
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=recipe_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d recipe_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
-  postgres_data:
+  pgdata:
