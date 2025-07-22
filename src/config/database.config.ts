@@ -1,14 +1,15 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
-import * as path from 'path';
 import * as dotenv from 'dotenv';
 import * as process from 'node:process';
-const dotenvPath = path.resolve(process.cwd(), '.env.development');
-const result = dotenv.config({path: dotenvPath})
+import * as path from 'path';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
-if(result.error) {
-//     do nothing
+const dotenvPath = path.resolve(process.cwd(), '.env.development');
+const result = dotenv.config({ path: dotenvPath });
+
+if (result.error) {
+    //     do nothing
 }
 
 function getTypeOrmConfig(configService: ConfigService): DataSourceOptions {
@@ -24,17 +25,17 @@ function getTypeOrmConfig(configService: ConfigService): DataSourceOptions {
         migrations: ['dist/database/migrations/*.js'],
         migrationsRun: false,
         logging: true,
-    }
+    };
 }
 
 export const databaseConfig: TypeOrmModuleAsyncOptions = {
     imports: [ConfigModule],
     inject: [ConfigService],
-    useFactory: async (configService: ConfigService) => (getTypeOrmConfig(configService)),
-}
+    useFactory: async (configService: ConfigService) =>
+        getTypeOrmConfig(configService),
+};
 
 const dataSource = new DataSource(getTypeOrmConfig(new ConfigService()));
 export const dataSourceOptions = getTypeOrmConfig(new ConfigService());
 
 export default dataSource;
-
