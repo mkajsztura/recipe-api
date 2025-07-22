@@ -26,9 +26,6 @@
 - Use meaningful labels and metadata
 - Document Dockerfile steps with comments
 - Use build arguments for configurable values
-- Follow consistent naming conventions
-- Keep Dockerfiles simple and readable
-- Use health checks for production containers
 
 ## Development Workflow
 - Use docker-compose for local development
