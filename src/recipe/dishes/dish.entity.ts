@@ -7,7 +7,7 @@ export class Dish extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: 'varchar' })
+    @Column({ type: 'varchar', length: 255 })
     name: string;
 
     @Column({ type: 'varchar' })
@@ -19,21 +19,19 @@ export class Dish extends BaseEntity {
     @Column({ nullable: true, type: 'text' })
     description?: string;
 
-    @Column({ type: 'boolean' })
+    @Column({ type: 'boolean', default: false })
     isPublic: boolean;
 
-    @Column({type: 'timestamp'})
-    createdAt: Date
+    @Column({ type: 'timestamp', default: () => 'now()' })
+    createdAt: Date;
 
-    @Column({type: 'timestamp'})
-    updatedAt: Date
+    @Column({ type: 'timestamp', default: () => 'now()' })
+    updatedAt: Date;
 
-    @ManyToOne(() => User, (user) => user.dishes)
+    @ManyToOne(() => User, (user) => user.dishes, { nullable: false, onDelete: 'CASCADE' })
     user: User;
 
     // one dish to many ingredients
-    @OneToMany(() => Ingredient, (ingredient) => ingredient.dish, {
-        onDelete: 'CASCADE',
-    })
+    @OneToMany(() => Ingredient, (ingredient) => ingredient.dish)
     ingredients: Ingredient[];
 }

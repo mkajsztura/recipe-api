@@ -9,18 +9,16 @@ export class Product extends BaseEntity {
     @Column({ type: 'varchar', length: 255 })
     name: string;
 
-    @Column({ type: 'varchar' })
+    @Column({ type: 'varchar', length: 255 })
     unit: 'kg' | 'l' | 'item';
 
-    @Column({type: 'timestamp'})
-    createdAt: Date
+    @Column({ type: 'timestamp', default: () => 'now()' })
+    createdAt: Date;
 
-    @Column({type: 'timestamp'})
-    updatedAt: Date
+    @Column({ type: 'timestamp', default: () => 'now()' })
+    updatedAt: Date;
 
     // one product (can be assigned) to many ingredients
-    @OneToMany(() => Ingredient, (ingredient) => ingredient.product, {
-        onDelete: 'CASCADE',
-    })
+    @OneToMany(() => Ingredient, (ingredient) => ingredient.product)
     ingredients: Ingredient[];
 }
