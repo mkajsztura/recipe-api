@@ -1,0 +1,14 @@
+import { MigrationInterface, QueryRunner } from "typeorm";
+
+export class MakeDishDescriptionNullable1785331108534 implements MigrationInterface {
+    name = 'MakeDishDescriptionNullable1785331108534'
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`ALTER TABLE "dish" ALTER COLUMN "description" DROP NOT NULL`);
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`ALTER TABLE "dish" ALTER COLUMN "description" SET NOT NULL`);
+    }
+
+}

@@ -17,9 +17,9 @@ export class Ingredient extends BaseEntity {
     amount: number;
 
     // many ingredients to one dish
-    @ManyToOne(() => Dish, (dish) => dish.ingredients)
+    @ManyToOne(() => Dish, (dish) => dish.ingredients, { nullable: false, onDelete: 'CASCADE' })
     dish: Dish;
 
-    @ManyToOne(() => Product, (product) => product.ingredients)
+    @ManyToOne(() => Product, (product) => product.ingredients, { nullable: false, onDelete: 'CASCADE' })
     product: Product;
 }
